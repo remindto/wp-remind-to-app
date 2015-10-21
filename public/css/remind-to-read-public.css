@@ -1,4 +1,355 @@
-/**
- * All of the CSS for your public-facing functionality should be
- * included in this file.
- */
+.return-to-spot-wrapper {
+  display: block;
+  position: fixed;
+  z-index: 9999830 !important;
+  bottom: 100px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -webkit-transition: opacity 0.25s ease-in-out;
+}
+
+.return-to-spot {
+  cursor: pointer;
+}
+
+.return-to-spot:hover .close-icon {
+  opacity: 1;
+}
+
+.return-to-spot {
+  width: auto;
+  text-align: center;
+  height: 30px;
+  line-height: 33px;
+  font-family: "neutra-face-text", "Helvetica Neue", Helvetica, Segoe, "Segoe UI", "Segoe WP", Calibri, Arial, clean, sans-serif;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.return-to-spot-button {
+  background: #3d8be3;
+  display: inline-block;
+  color: white;
+  border-radius: 10px;
+  padding-right: 48px;
+  padding-left: 23px;
+}
+
+.return-to-spot-wrapper .close-icon {
+  opacity: .5;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  display: block;
+  right: 5px;
+  top: 5px;
+  border-radius: 20px;
+}
+
+.reading-mode .return-to-spot-wrapper.viewable {
+  opacity: 1;
+}
+
+.return-to-spot-wrapper.hideforever {
+  opacity: 0 !important;
+}
+
+.return-to-spot-wrapper {
+  opacity: 0;
+}
+
+.con-clock {
+  background-image: url("../img/icon.png");
+  background-repeat: no-repeat;
+  position: absolute;
+  height: 35px;
+  width: 35px;
+  top: 2px;
+  background-size: cover;
+  margin-left: -35px;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .con-clock {
+    background-image: url("../img/icon@2x.png");
+    background-size: 35px auto;
+  }
+}
+
+#articleBody .sendlater-container p {
+  padding: 0px;
+  margin: 0px;
+  color: black;
+  font-size: 14px;
+  font-family: "neutra-face-text","Helvetica Neue",Helvetica,Segoe,"Segoe UI","Segoe WP",Calibri,Arial,clean,sans-serif;
+  text-align: center;
+}
+
+#articleBody .sendlater-container p.email-more-explain-after {
+  font-size: 12px;
+  padding-top: 5px;
+}
+
+.sendlater-container .close-icon {
+  display: none;
+  top: -6px;
+  right: -7px;
+  background-size: 20px 20px;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.sendlater-container {
+  height: 150px;
+  margin-bottom: -40px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transform: translateY(240px);
+  -ms-transform: translateY(240px);
+  transform: translateY(240px);
+  margin-left: 30px;
+  border-radius: 10px 10px 0px 0px;
+  box-sizing: border-box;
+  width: 320px;
+  background: white;
+  border-left: 1px solid #999;
+  border-top: 1px solid #999;
+  border-right: 1px solid #999;
+  position: fixed;
+  z-index: 9999930 !important;
+  bottom: 0px;
+  display: inline-block;
+}
+
+.sendlater-container > div {
+  opacity: 0.5;
+}
+
+.sendlater-container:hover {
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+  color: black;
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  box-shadow: 0 0px 50px -10px rgba(0, 0, 0, 0.25);
+}
+
+.sendlater-container:hover > div {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  .sendlater-container {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 850px) {
+  .sendlater-container {
+    margin-left: -360px;
+  }
+}
+
+@media only screen and (min-width: 850px) {
+  .sendlater-container {
+    margin-left: 30px;
+  }
+}
+
+.sendlater-container.viewable {
+  opacity: 1;
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+}
+
+.sendlater-email-field-wrapper, .sendlater-email-button-wrapper {
+  display: inline-block;
+}
+
+.sendlater-move-right {
+  float: right;
+}
+
+.sendlater-closed .sendlater-container {
+  -webkit-transform: translateY(240px) !important;
+  -ms-transform: translateY(240px) !important;
+  transform: translateY(240px) !important;
+}
+
+.sendlater-container button {
+  cursor: default;
+  border: none !important;
+  font-weight: 600;
+  text-transform: none;
+  font-size: 16px;
+  letter-spacing: 0px;
+  width: 100%;
+  height: 40px;
+  display: block;
+  background: transparent;
+  color: black;
+  padding-left: 30px;
+}
+
+.sendlater-email-field-wrapper {
+  width: 225px;
+  vertical-align: top;
+}
+
+.time-option-change {
+  color: #3d8be3;
+  outline: none;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  top: 1em;
+  left: 100%;
+  display: none;
+  border: none;
+  background: none;
+  font-weight: bold;
+  border-radius: 0px;
+  box-shadow: none;
+  font-size: 1em;
+  font-family: inherit;
+  margin-bottom: -1px;
+  -webkit-appearance: none;
+  -webkit-writing-mode: none;
+}
+
+.sendlater-email-input-field {
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 0;
+  margin: 0;
+  outline: 0;
+  font-size: 14px;
+  color: #666;
+  display: block;
+  width: 158px;
+}
+
+.sendlater-email-input {
+  width: 100%;
+  vertical-align: top;
+  color: black;
+}
+
+.sll-email-form {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 0em;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+.sll-email-form label.error {
+  position: absolute;
+  left: 110%;
+  top: -2px;
+  width: 120%;
+  background: #F2A0AF;
+  padding: 3px 10px;
+}
+
+.sll-email-form input[type=email] {
+  display: block;
+  width: 100%;
+  margin: 0 7px 0 auto;
+  height: 35px;
+  border: 1px solid #ccc;
+  padding: 12px 8px;
+  line-height: 26px;
+}
+
+.sendlater-time-option {
+  display: none;
+  position: relative;
+  margin-left: 40px;
+}
+
+.sendlater-time-option p {
+  height: 20px;
+  line-height: 20px;
+}
+
+.sendlater-email-button-wrapper {
+  width: 50px;
+  text-align: right;
+  float: right;
+}
+
+.sendlater-email-button-wrapper input {
+  text-align: center;
+  color: white;
+  font-family: "neutra-face-text","Helvetica Neue",Helvetica,Segoe,"Segoe UI","Segoe WP",Calibri,Arial,clean,sans-serif;
+  width: 45px;
+  height: 35px;
+  border-radius: 5px;
+  background: #007dbe;
+  border: none;
+  font-size: 13px;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height: 24px;
+  padding: 8px;
+}
+
+.sendlater-email-button-wrapper input:hover {
+  background: #1097dc;
+}
+
+.time-option-selected {
+  position: relative;
+}
+
+.time-option-selected:hover .time-option-change-options, .time-option-selected.active .time-option-change-options {
+  display: block;
+}
+
+.select-time .time-option-change, .select-time .sendlater-time-option {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.select-time .sendlater-email-input {
+  display: none;
+}
+
+.sendlater-container.accept-email .sendlater-email-input {
+  display: inline-block;
+}
+
+.sendlater-container.select-time {
+  height: 80px;
+  margin-bottom: -10px;
+}
+
+.sendlater-container.select-time:before {
+  position: absolute;
+}
+
+.sendlater-container.select-time .close-icon {
+  display: block;
+}
+
+.display-while-scrolling, .display-while-skipping {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=remindtoread.css.map */
