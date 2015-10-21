@@ -1,3 +1,5 @@
+![](https://github.com/RemindToRead/wp-remind-to-read/blob/master/rtr-extended-settings.png?raw=true)
+
 # Remind to Read
 
 A WordPress Plugin to let your users send themselves delayed reminders
