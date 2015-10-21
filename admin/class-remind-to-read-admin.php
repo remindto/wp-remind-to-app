@@ -159,21 +159,21 @@ class Remind_To_Read_Admin {
 		if (isset($_POST["isRTRExtSettings"]) && $_POST["isRTRExtSettings"] == 'Y') {
 
 			if (empty($_POST["remind_to_read_active"])) {
-				array_push($errors, "Remind to read needs to be set.");
+				array_push($errors, "Remind to read status needs to be set.");
 			} else {
 				$options["remind_to_read_active"] = sanitize_text_field($_POST["remind_to_read_active"]);
 			}
 
 
 			if (empty($_POST["remind_to_read_key"])) {
-				array_push($errors, "Remind to read needs to be set.");
+				array_push($errors, "Remind to read key needs to be set.");
 			} else {
 				$options["remind_to_read_key"] = sanitize_text_field($_POST["remind_to_read_key"]);
 			}
 
 
 			if (empty($_POST["remind_to_read_url"])) {
-				array_push($errors, "Remind to read needs to be set.");
+				array_push($errors, "Remind to read domain needs to be set.");
 			} else {
 				$options["remind_to_read_url"] = sanitize_text_field($_POST["remind_to_read_url"]);
 			}
