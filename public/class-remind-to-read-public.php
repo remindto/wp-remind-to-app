@@ -143,7 +143,7 @@ class Remind_To_Read_Public {
 	    $rtrsettings = $this->rtr_ext_settings();
 	    $rtr_url = $rtrsettings['remind_to_read_url'];
 	    $rtr_key = $rtrsettings['remind_to_read_key'];
-	    if(empty($rtr_url) || empty($rtr_key) ){
+	    if( empty($rtr_url) || empty($rtr_key) ){
 	    	error_log('$rtrsettings missing.');
 	    	return false;
 	    }
