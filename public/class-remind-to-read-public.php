@@ -115,19 +115,19 @@ class Remind_To_Read_Public {
 	 */
 	public function remind_to_read() {
 	    if ( isset($_REQUEST) ) {
-	      $length = isset($_REQUEST['length']) ? sanitize_string($_REQUEST['length']) : null;
-	      $email =  isset($_REQUEST['email']) ? sanitize_string($_REQUEST['email']) : null;
-	      $url =    isset($_REQUEST['url']) ? sanitize_string($_REQUEST['url']) : null;
-	      $selector =         isset($_REQUEST['selector']) ? sanitize_string($_REQUEST['selector']) : null;
-	      $content =          isset($_REQUEST['content']) ? sanitize_string($_REQUEST['content']) : null;
-	      $selectorIndex =    isset($_REQUEST['selectorIndex']) ? sanitize_string($_REQUEST['selectorIndex']) : null;
+	      $length 			= isset( sanitize_string( $_REQUEST['length']) ) 		? sanitize_string($_REQUEST['length']) 			: null;
+	      $email 			= isset( sanitize_string( $_REQUEST['email']) ) 		? sanitize_string($_REQUEST['email']) 			: null;
+	      $url 				= isset( sanitize_string( $_REQUEST['url']) ) 			? sanitize_string($_REQUEST['url']) 			: null;
+	      $selector 		= isset( sanitize_string( $_REQUEST['selector']) ) 		? sanitize_string($_REQUEST['selector']) 		: null;
+	      $content 			= isset( sanitize_string( $_REQUEST['content']) ) 		? sanitize_string($_REQUEST['content']) 		: null;
+	      $selectorIndex 	= isset( sanitize_string( $_REQUEST['selectorIndex']) ) ? sanitize_string($_REQUEST['selectorIndex']) 	: null;
 	      $json = array(
-	        'email'   => $email,
-	        'length'  => $length,
-	        'url'     => $url,
-	        'selector'    => $selector,
-	        'content'     => $content,
-	        'selectorIndex'   => $selectorIndex,
+	        'email'   			=> $email,
+	        'length'  			=> $length,
+	        'url'     			=> $url,
+	        'selector'    		=> $selector,
+	        'content'     		=> $content,
+	        'selectorIndex'   	=> $selectorIndex,
 	      );
 	      echo json_encode($json);
 	    }
@@ -140,25 +140,50 @@ class Remind_To_Read_Public {
 	 * Request made to external saving service
 	 */
 	public function make_remind_request($obj){
-	    $url = '' .
-	    REMIND_TO_READ_URL .
-	  '?' .
-	  'url=' . $obj['url'] .
-	  '&' .
-	  'delay=' . $obj['length'] .
-	  '&' .
-	  'email=' . $obj['email'] .
-	  '&' .
-	  'selector=' . $obj['selector'] .
-	  '&' .
-	  'content=' . $obj['content'] .
-	  '&' .
-	  'selectorIndex=' . $obj['selectorIndex'] .
-	  '&' .
+	    $rtrsettings = $this->rtr_ext_settings();
+	    if(!isset($rtrsettings['remind_to_read_url']) || !isset($rtrsettings['remind_to_read_key'])){
+	    	error_log('$rtrsettings missing.');
+	    	return false;
+	    }
+	    $domain = $rtrsettings['remind_to_read_url'] . $rtrsettings['remind_to_read_key'] . '/later/new';
+	    $url =  '' .
+				$domain .
+				'?' .
+				'url=' . $obj['url'] .
+				'&' .
+				'delay=' . $obj['length'] .
+				'&' .
+				'email=' . $obj['email'] .
+				'&' .
+				'selector=' . $obj['selector'] .
+				'&' .
+				'content=' . $obj['content'] .
+				'&' .
+				'selectorIndex=' . $obj['selectorIndex'] .
+				'&' .
 
-	  'renew=' . 'true'; 
+				'renew=' . 'true'; 
 
 	    $response = wp_remote_get( $url );
 	}
+
+	public function rtr_ext_settings() {
+
+		$settings = array();
+
+		$settings["remind_to_read_active"]  = "no";
+		$settings["remind_to_read_url"]  	= "";
+		$settings["remind_to_read_key"]  	= "";
+
+		$rtr_ext_settings = Remind_To_Read_Admin::rtr_get_extended_settings();
+
+		/* Remind To Read */
+		$settings["remind_to_read_active"] 	= isset( $rtr_ext_settings["remind_to_read_active"] ) 	? $rtr_ext_settings["remind_to_read_active"] : '';
+		$settings["remind_to_read_url"] 	= isset( $rtr_ext_settings["remind_to_read_url"] ) 		? $rtr_ext_settings["remind_to_read_url"] : '';
+		$settings["remind_to_read_key"] 	= isset( $rtr_ext_settings["remind_to_read_key"] ) 		? $rtr_ext_settings["remind_to_read_key"] : '';
+
+		return apply_filters( 'rtr_ext_settings', $settings );
+	}
+
 
 }

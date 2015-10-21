@@ -116,7 +116,7 @@ class Remind_To_Read_Admin {
 	}
 
 
-	public function rtr_get_extended_settings() {
+	public static function rtr_get_extended_settings() {
 
 		$options = get_option("rtr-extended-settings");
 		$results = array();

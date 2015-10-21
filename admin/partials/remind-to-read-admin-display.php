@@ -82,7 +82,10 @@
           <th scope="row"><label for="module_remind_to_read_key"><?php _e('Remind to Read Key'); ?></label></th>
           <td>
             <?php 
-			$this->printTextTag("remind_to_read_key", $options["remind_to_read_key"], array("size" => "50", "placeholder" => "[Found on settings page]"));
+			$this->printTextTag("remind_to_read_key", 
+				$options["remind_to_read_key"], 
+				array("size" => "50", "placeholder" => "[Found on settings page]")
+			);
 			?>
           </td>
         </tr>
@@ -90,7 +93,10 @@
           <th scope="row"><label for="module_remind_to_read_url"><?php _e('Remind to Read Domain'); ?></label></th>
           <td>
             <?php 
-			$this->printTextTag("remind_to_read_url", $options["remind_to_read_url"], array("size" => "50", "placeholder" => "http://domain.com"));
+			$this->printTextTag("remind_to_read_url", 
+				$options["remind_to_read_url"], 
+				array("size" => "50", "placeholder" => "http://domain.com")
+			);
 			?>
           </td>
         </tr>
