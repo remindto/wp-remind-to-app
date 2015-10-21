@@ -52,6 +52,9 @@ class Remind_To_Read_Public {
 		$this->remind_to_read = $remind_to_read;
 		$this->version = $version;
 
+		add_action( 'wp_head', array( $this, 'healthcheck_remind_to_read') );
+		// add_action( 'wp_ajax_remind_to_read', array( $this, 'remind_to_read') );
+		add_action( 'wp_ajax_nopriv_remind_to_read', array( $this, 'remind_to_read') );
 	}
 
 	/**
@@ -97,7 +100,65 @@ class Remind_To_Read_Public {
 		 */
 
 		wp_enqueue_script( $this->remind_to_read, plugin_dir_url( __FILE__ ) . 'js/remind-to-read-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->remind_to_read, plugin_dir_url( __FILE__ ) . 'js/continue-to-read-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->remind_to_read, plugin_dir_url( __FILE__ ) . 'js/uturn-public.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+
+	public function healthcheck_remind_to_read() {
+		error_log('Remind to read is working');
+	}
+
+	/**
+	 * Response from AJAX request from frontend
+	 */
+	public function remind_to_read() {
+	    if ( isset($_REQUEST) ) {
+	      $length = isset($_REQUEST['length']) ? sanitize_string($_REQUEST['length']) : null;
+	      $email =  isset($_REQUEST['email']) ? sanitize_string($_REQUEST['email']) : null;
+	      $url =    isset($_REQUEST['url']) ? sanitize_string($_REQUEST['url']) : null;
+	      $selector =         isset($_REQUEST['selector']) ? sanitize_string($_REQUEST['selector']) : null;
+	      $content =          isset($_REQUEST['content']) ? sanitize_string($_REQUEST['content']) : null;
+	      $selectorIndex =    isset($_REQUEST['selectorIndex']) ? sanitize_string($_REQUEST['selectorIndex']) : null;
+	      $json = array(
+	        'email'   => $email,
+	        'length'  => $length,
+	        'url'     => $url,
+	        'selector'    => $selector,
+	        'content'     => $content,
+	        'selectorIndex'   => $selectorIndex,
+	      );
+	      echo json_encode($json);
+	    }
+	    make_remind_request($json);
+
+	    die();
+	}
+	 
+	/**
+	 * Request made to external saving service
+	 */
+	public function make_remind_request($obj){
+	    $url = '' .
+	    // REMIND_TO_READ_URL .
+	  '?' .
+	  'url=' . $obj['url'] .
+	  '&' .
+	  'delay=' . $obj['length'] .
+	  '&' .
+	  'email=' . $obj['email'] .
+	  '&' .
+	  'selector=' . $obj['selector'] .
+	  '&' .
+	  'content=' . $obj['content'] .
+	  '&' .
+	  'selectorIndex=' . $obj['selectorIndex'] .
+	  '&' .
+
+	  'renew=' . 'true'; 
+
+	    $response = wp_remote_get( $url );
 	}
 
 }
