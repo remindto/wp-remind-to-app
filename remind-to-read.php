@@ -8,17 +8,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              http://remindtoread.com
+ * @link              https://github.com/RemindToRead/wp-remind-to-read
  * @since             1.0.0
  * @package           Remind_to_read
  *
  * @wordpress-plugin
  * Plugin Name:       Remind to Read
- * Plugin URI:        http://remindtoread.com/wordpress/
+ * Plugin URI:        https://github.com/RemindToRead/wp-remind-to-read
  * Description:       Remind to Read provides your users a reminder to reengage content
  * Version:           1.0.0
  * Author:            Remind to Read
- * Author URI:        http://remindtoread.com/
+ * Author URI:        https://github.com/RemindToRead/wp-remind-to-read
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       remind-to-read
@@ -36,7 +36,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 function activate_remind_to_read() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-remind-to-read-activator.php';
-	Plugin_Name_Activator::activate();
+	Remind_To_Read_Activator::activate();
 }
 
 /**
@@ -45,7 +45,7 @@ function activate_remind_to_read() {
  */
 function deactivate_remind_to_read() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-remind-to-read-deactivator.php';
-	Plugin_Name_Deactivator::deactivate();
+	Remind_To_Read_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_remind_to_read' );

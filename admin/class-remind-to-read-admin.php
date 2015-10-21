@@ -3,7 +3,7 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       http://remindtoread.com
+ * @link       https://github.com/RemindToRead/wp-remind-to-read
  * @since      1.0.0
  *
  * @package    Remind_To_Read
@@ -73,7 +73,7 @@ class Remind_To_Read_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->remind_to_read, plugin_dir_url( __FILE__ ) . 'css/plugin-name-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->remind_to_read, plugin_dir_url( __FILE__ ) . 'css/remind-to-read-admin.css', array(), $this->version, 'all' );
 
 	}
 

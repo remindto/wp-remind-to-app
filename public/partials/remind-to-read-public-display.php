@@ -5,7 +5,7 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       http://remindtoread.com
+ * @link       https://github.com/RemindToRead/wp-remind-to-read
  * @since      1.0.0
  *
  * @package    Remind_To_read

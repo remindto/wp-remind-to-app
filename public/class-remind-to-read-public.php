@@ -3,7 +3,7 @@
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       http://remindtoread.com
+ * @link       https://github.com/RemindToRead/wp-remind-to-read
  * @since      1.0.0
  *
  * @package    Remind_To_Read
@@ -73,7 +73,7 @@ class Remind_To_Read_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->remind_to_read, plugin_dir_url( __FILE__ ) . 'css/plugin-name-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->remind_to_read, plugin_dir_url( __FILE__ ) . 'css/remind-to-read-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,7 +96,7 @@ class Remind_To_Read_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->remind_to_read, plugin_dir_url( __FILE__ ) . 'js/plugin-name-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->remind_to_read, plugin_dir_url( __FILE__ ) . 'js/remind-to-read-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 
