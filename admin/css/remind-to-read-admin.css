@@ -1,6 +1,7 @@
 /**
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
+<<<<<<< HEAD
  */
 
 .success {
@@ -32,3 +33,6 @@
 #rtr-extended-settings .form-table th {
 	width: 230px;
 }
+=======
+ */
+>>>>>>> 3ad3ff69bd1b7de3ef0abd2c03825f0a5ca83b60

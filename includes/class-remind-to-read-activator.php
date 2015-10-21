@@ -30,11 +30,15 @@ class Remind_To_Read_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+<<<<<<< HEAD
 		update_option("rtr-extended-settings", array(
 			"remind_to_read_active"	=> !empty(REMIND_TO_READ_STATUS) ? REMIND_TO_READ_STATUS : "no",
 			"remind_to_read_url"	=> !empty(REMIND_TO_READ_URL) ? REMIND_TO_READ_URL : "",
 			"remind_to_read_key"	=> !empty(REMIND_TO_READ_KEY) ? REMIND_TO_READ_KEY : ""
 		));
+=======
+
+>>>>>>> 3ad3ff69bd1b7de3ef0abd2c03825f0a5ca83b60
 	}
 
 }
