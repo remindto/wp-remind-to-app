@@ -114,13 +114,13 @@ class Remind_To_Read_Public {
 	 * Response from AJAX request from frontend
 	 */
 	public function remind_to_read() {
-	    if ( isset($_REQUEST) ) {
-	      $length 			= isset( sanitize_string( $_REQUEST['length']) ) 		? sanitize_string($_REQUEST['length']) 			: null;
-	      $email 			= isset( sanitize_string( $_REQUEST['email']) ) 		? sanitize_string($_REQUEST['email']) 			: null;
-	      $url 				= isset( sanitize_string( $_REQUEST['url']) ) 			? sanitize_string($_REQUEST['url']) 			: null;
-	      $selector 		= isset( sanitize_string( $_REQUEST['selector']) ) 		? sanitize_string($_REQUEST['selector']) 		: null;
-	      $content 			= isset( sanitize_string( $_REQUEST['content']) ) 		? sanitize_string($_REQUEST['content']) 		: null;
-	      $selectorIndex 	= isset( sanitize_string( $_REQUEST['selectorIndex']) ) ? sanitize_string($_REQUEST['selectorIndex']) 	: null;
+	    if ( isset($_REQUEST))  {
+	      $length 			= isset( $_REQUEST['length'] ) 			? htmlspecialchars($_REQUEST['length']) 		: null;
+	      $email 			= isset( $_REQUEST['email'] ) 			? htmlspecialchars($_REQUEST['email']) 			: null;
+	      $url 				= isset( $_REQUEST['url'] ) 			? htmlspecialchars($_REQUEST['url']) 			: null;
+	      $selector 		= isset( $_REQUEST['selector'] ) 		? htmlspecialchars($_REQUEST['selector']) 		: null;
+	      $content 			= isset( $_REQUEST['content'] ) 		? htmlspecialchars($_REQUEST['content']) 		: null;
+	      $selectorIndex 	= isset( $_REQUEST['selectorIndex'] ) 	? htmlspecialchars($_REQUEST['selectorIndex']) 	: null;
 	      $json = array(
 	        'email'   			=> $email,
 	        'length'  			=> $length,
@@ -141,7 +141,9 @@ class Remind_To_Read_Public {
 	 */
 	public function make_remind_request($obj){
 	    $rtrsettings = $this->rtr_ext_settings();
-	    if(!isset($rtrsettings['remind_to_read_url']) || !isset($rtrsettings['remind_to_read_key'])){
+	    $rtr_url = $rtrsettings['remind_to_read_url'];
+	    $rtr_key = $rtrsettings['remind_to_read_key'];
+	    if(empty($rtr_url) || empty($rtr_key) ){
 	    	error_log('$rtrsettings missing.');
 	    	return false;
 	    }
