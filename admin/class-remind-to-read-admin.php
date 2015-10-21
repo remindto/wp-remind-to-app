@@ -40,6 +40,19 @@ class Remind_To_Read_Admin {
 	 */
 	private $version;
 
+	public static $VERSION		= "0.1";
+	private $NAME;
+	private $MENU_SLUG			= "rtr-extended-settings";
+	private $MENU_TITLE			= "Remind to Read Settings";
+	private $MENU_PAGE_TITLE	= "Remind to Read Settings > Settings";
+	private $OPTIONS_KEY		= "rtr-extended-settings";
+	private $CAPABILITY			= "manage_options";
+
+	private $OPTION_DEFAULTS	= array(
+		"remind_to_read_active" => "no",
+		"remind_to_read_token" => ""
+	);
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -52,6 +65,7 @@ class Remind_To_Read_Admin {
 		$this->remind_to_read = $remind_to_read;
 		$this->version = $version;
 
+		$this->RTRExtendedSettings();
 	}
 
 	/**
@@ -98,6 +112,150 @@ class Remind_To_Read_Admin {
 
 		wp_enqueue_script( $this->remind_to_read, plugin_dir_url( __FILE__ ) . 'js/remind-to-read-admin.js', array( 'jquery' ), $this->version, false );
 
+	}
+
+
+	public function rtr_get_extended_settings() {
+
+		$options = get_option("rtr-extended-settings");
+		$results = array();
+
+		if (isset($options["remind_to_read_active"])) {
+			$results["remind_to_read_active"] = $options["remind_to_read_active"];
+		}
+
+		if (isset($options["remind_to_read_token"])) {
+			$results["remind_to_read_token"] = $options["remind_to_read_token"];
+		}
+
+		return $results;
+	}
+
+
+	public function RTRExtendedSettings() {
+		add_action('admin_menu',   array(&$this, 'addSettingsSubMenu'));
+		// add_action('admin_footer', array(&$this, 'displayAdminWarning'));
+		//add_menu_page( 'CN Tools', 'CN Tools', $capability, $menu_slug, array( $this, 'options_page' ), $icon_url, '3.1364287364275' );
+		//add_submenu_page( $menu_slug, 'Create CN Pages', 'Create Pages', $capability, 'create-cn-pages', array( $this, 'create_cn_pages' ) );
+	}
+
+	/**
+	* Settings
+	*/
+	public function displaySettings() {
+		if (!current_user_can($this->CAPABILITY)) {
+			//wp_die(__('Sorry but you do not have sufficient permissions to access this page.'));
+		}
+
+		$errors  = array();
+		$isSaved = false;
+		$options = $this->getOptions();
+
+		if (isset($_POST["isRTRExtSettings"]) && $_POST["isRTRExtSettings"] == 'Y') {
+
+		//	Remind to Read active
+			if (empty($_POST["remind_to_read_active"])) {
+				array_push($errors, "Remind to read needs to be set.");
+			} else {
+				$options["remind_to_read_active"] = sanitize_text_field($_POST["remind_to_read_active"]);
+			}
+
+			if (empty($errors)) {
+				update_option($this->OPTIONS_KEY, $options);
+				$isSaved = true;
+			}
+		}
+		include("partials/remind-to-read-admin-display.php");
+	}
+
+	/**
+	* Add settings page in WordPress Settings menu.
+	*/
+	public function addSettingsSubMenu() {
+		add_options_page($this->MENU_PAGE_TITLE,
+						 $this->MENU_TITLE,
+						 $this->CAPABILITY,
+						 $this->MENU_SLUG,
+						 array(&$this, 'displaySettings'));
+	}
+
+	/**
+	* Adds a 'Settings' link to the Plugins screen in WP admin
+	*/
+	public function addPluginMetaLinks($links) {
+		array_unshift($links, '<a href="'. $this->getSettingsURL() . '">' . __('Settings'));
+		return $links;
+	}
+
+	/**
+	* Show warning if not properly setup yet
+	*/
+	public function displayAdminWarning() {
+		$options = $this->getOptions();
+		if (!isset($options['api_key']) || empty($options['api_key'])) {
+			?>
+			<div id='message' class='error'>
+				<p><strong>RTR Extended Settings plugin is not active.</strong> You need to <a href='<?php echo $this->getSettingsURL(); ?>'>update settings</a> to get things going.</p>
+			</div>
+			<?php
+		}
+	}
+
+	/**
+	* Get the URL of the plugin settings page
+	*/
+	private function getSettingsURL() {
+		return admin_url('options-general.php?page=' . $this->MENU_SLUG);
+	}
+
+	/**
+	* Returns options
+	*/
+	private function getOptions() {
+		$options = get_option($this->OPTIONS_KEY);
+		if ($options === false) {
+			$options = $this->OPTION_DEFAULTS;
+		} else {
+			$options = array_merge($this->OPTION_DEFAULTS, $options);
+		}
+		return $options;
+	}
+
+	public function printSuccessMessage($message) {
+		?>
+		<div class='success'><p><strong><?php print esc_html($message); ?></strong></p></div>
+		<?php
+	}
+
+	public function printErrorMessage($message) {
+		?>
+		<div id='message' class='error'><p><strong><?php print esc_html($message); ?></strong></p></div>
+		<?php
+	}
+
+	public function printSelectTag($name, $options, $selectedOption="") {
+		$tag = '<select name="' . esc_attr($name) . '" id="' . esc_attr($name) . '">';
+		foreach ($options as $key => $val) {
+			$tag .= '<option value="' . esc_attr($key) . '"';
+			if ($selectedOption == $key) { $tag .= ' selected="selected"'; }
+			$tag .= '>'. esc_html($val) . '</option>';
+		}
+		$tag .= '</select>';
+		print $tag;
+	}
+
+	public function printTextTag($name, $value, $options=array()) {
+		$tag = '<input type="text" name="' . esc_attr($name). '" id="' . esc_attr($name) . '" value="' . esc_attr($value) . '"';
+		foreach ($options as $key => $val) {
+			$tag .= ' ' . esc_attr($key) . '="' . esc_attr($val) . '"';
+		}
+		$tag .= ' />';
+		print $tag;
+	}
+
+	public function printTextareaTag($name, $value) {
+		$tag = '<textarea name="' . esc_attr($name). '" id="' . esc_attr($name) . '">' . stripslashes($value). '</textarea>';
+		print $tag; // $tag;
 	}
 
 }

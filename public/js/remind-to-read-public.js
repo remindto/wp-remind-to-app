@@ -171,7 +171,7 @@
       var content     = posObj.firstParagraph;
       var elSelector  = _selector;
       var params = {
-          'action':'tny_remind_to_read',
+          'action':'remind_to_read',
           'url' : encodeURIComponent(_url),
           'email' : encodeURIComponent(_email),
           'length' : encodeURIComponent(length),

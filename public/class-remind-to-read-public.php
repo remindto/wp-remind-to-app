@@ -131,7 +131,7 @@ class Remind_To_Read_Public {
 	      );
 	      echo json_encode($json);
 	    }
-	    make_remind_request($json);
+	    $this->make_remind_request($json);
 
 	    die();
 	}
@@ -141,7 +141,7 @@ class Remind_To_Read_Public {
 	 */
 	public function make_remind_request($obj){
 	    $url = '' .
-	    // REMIND_TO_READ_URL .
+	    REMIND_TO_READ_URL .
 	  '?' .
 	  'url=' . $obj['url'] .
 	  '&' .
