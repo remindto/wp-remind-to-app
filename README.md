@@ -8,9 +8,7 @@ A WordPress Plugin to let your users send themselves delayed reminders
 
 ## Installation
 
-The Boilerplate can be installed directly into your plugins folder "as-is". You will want to rename it and the classes inside of it to fit your needs.
-
-Note that this will activate the source code of the Boilerplate, but because the Boilerplate has no real functionality so no menu  items, meta boxes, or custom post types will be added.
+RTR Extended Settings can be installed directly into your plugins folder "as-is". Activate in the plugin panel. Settings can be adjusted in the Settings > Remind to Read Settings.
 
 ## License
 
