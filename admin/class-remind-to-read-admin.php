@@ -50,7 +50,8 @@ class Remind_To_Read_Admin {
 
 	private $OPTION_DEFAULTS	= array(
 		"remind_to_read_active" => "no",
-		"remind_to_read_token" => ""
+		"remind_to_read_url" => "",
+		"remind_to_read_key" => ""
 	);
 
 	/**
@@ -124,8 +125,12 @@ class Remind_To_Read_Admin {
 			$results["remind_to_read_active"] = $options["remind_to_read_active"];
 		}
 
-		if (isset($options["remind_to_read_token"])) {
-			$results["remind_to_read_token"] = $options["remind_to_read_token"];
+		if (isset($options["remind_to_read_url"])) {
+			$results["remind_to_read_url"] = $options["remind_to_read_url"];
+		}
+
+		if (isset($options["remind_to_read_key"])) {
+			$results["remind_to_read_key"] = $options["remind_to_read_key"];
 		}
 
 		return $results;
@@ -153,11 +158,24 @@ class Remind_To_Read_Admin {
 
 		if (isset($_POST["isRTRExtSettings"]) && $_POST["isRTRExtSettings"] == 'Y') {
 
-		//	Remind to Read active
 			if (empty($_POST["remind_to_read_active"])) {
 				array_push($errors, "Remind to read needs to be set.");
 			} else {
 				$options["remind_to_read_active"] = sanitize_text_field($_POST["remind_to_read_active"]);
+			}
+
+
+			if (empty($_POST["remind_to_read_key"])) {
+				array_push($errors, "Remind to read needs to be set.");
+			} else {
+				$options["remind_to_read_key"] = sanitize_text_field($_POST["remind_to_read_key"]);
+			}
+
+
+			if (empty($_POST["remind_to_read_url"])) {
+				array_push($errors, "Remind to read needs to be set.");
+			} else {
+				$options["remind_to_read_url"] = sanitize_text_field($_POST["remind_to_read_url"]);
 			}
 
 			if (empty($errors)) {

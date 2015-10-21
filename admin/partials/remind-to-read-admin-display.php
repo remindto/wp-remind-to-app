@@ -78,6 +78,22 @@
             ); ?>
           </td>
         </tr>
+        <tr valign="top">
+          <th scope="row"><label for="module_remind_to_read_key"><?php _e('Remind to Read Key'); ?></label></th>
+          <td>
+            <?php 
+			$this->printTextTag("remind_to_read_key", $options["remind_to_read_key"], array("size" => "36", "placeholder" => "[Found on settings page]"));
+			?>
+          </td>
+        </tr>
+        <tr valign="top">
+          <th scope="row"><label for="module_remind_to_read_url"><?php _e('Remind to Read URL'); ?></label></th>
+          <td>http://
+            <?php 
+			$this->printTextTag("remind_to_read_url", $options["remind_to_read_url"], array("size" => "30", "placeholder" => "domain.com"));
+			?>
+          </td>
+        </tr>
       </table>
 
       <p class="submit">
