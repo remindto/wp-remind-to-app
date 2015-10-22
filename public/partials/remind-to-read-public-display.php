@@ -14,7 +14,6 @@
 ?>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
-<<<<<<< HEAD
 
 <div class="sendlater-move-right">
   <div class="sendlater-container accept-email">
@@ -46,5 +45,3 @@
     </div>
   </div>
 </div>
-=======
->>>>>>> 3ad3ff69bd1b7de3ef0abd2c03825f0a5ca83b60

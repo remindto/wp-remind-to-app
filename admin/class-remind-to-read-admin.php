@@ -40,11 +40,7 @@ class Remind_To_Read_Admin {
 	 */
 	private $version;
 
-<<<<<<< HEAD
 	public static $VERSION		= "1.0.0";
-=======
-	public static $VERSION		= "0.1";
->>>>>>> 3ad3ff69bd1b7de3ef0abd2c03825f0a5ca83b60
 	private $NAME;
 	private $MENU_SLUG			= "rtr-extended-settings";
 	private $MENU_TITLE			= "Remind to Read Settings";
@@ -54,13 +50,8 @@ class Remind_To_Read_Admin {
 
 	private $OPTION_DEFAULTS	= array(
 		"remind_to_read_active" => "no",
-<<<<<<< HEAD
 		"remind_to_read_url" 	=> "",
 		"remind_to_read_key" 	=> ""
-=======
-		"remind_to_read_url" => "",
-		"remind_to_read_key" => ""
->>>>>>> 3ad3ff69bd1b7de3ef0abd2c03825f0a5ca83b60
 	);
 
 	/**
@@ -148,12 +139,6 @@ class Remind_To_Read_Admin {
 
 	public function RTRExtendedSettings() {
 		add_action('admin_menu',   array(&$this, 'addSettingsSubMenu'));
-<<<<<<< HEAD
-=======
-		// add_action('admin_footer', array(&$this, 'displayAdminWarning'));
-		//add_menu_page( 'CN Tools', 'CN Tools', $capability, $menu_slug, array( $this, 'options_page' ), $icon_url, '3.1364287364275' );
-		//add_submenu_page( $menu_slug, 'Create CN Pages', 'Create Pages', $capability, 'create-cn-pages', array( $this, 'create_cn_pages' ) );
->>>>>>> 3ad3ff69bd1b7de3ef0abd2c03825f0a5ca83b60
 	}
 
 	/**
@@ -161,10 +146,6 @@ class Remind_To_Read_Admin {
 	*/
 	public function displaySettings() {
 		if (!current_user_can($this->CAPABILITY)) {
-<<<<<<< HEAD
-=======
-			//wp_die(__('Sorry but you do not have sufficient permissions to access this page.'));
->>>>>>> 3ad3ff69bd1b7de3ef0abd2c03825f0a5ca83b60
 		}
 
 		$errors  = array();
@@ -228,7 +209,7 @@ class Remind_To_Read_Admin {
 		if (!isset($options['api_key']) || empty($options['api_key'])) {
 			?>
 			<div id='message' class='error'>
-				<p><strong>RTR Extended Settings plugin is not active.</strong> You need to <a href='<?php echo $this->getSettingsURL(); ?>'>update settings</a> to get things going.</p>
+				<p><strong>Remind to Read Settings plugin is not active.</strong> You need to <a href='<?php echo $this->getSettingsURL(); ?>'>update settings</a> to get things going.</p>
 			</div>
 			<?php
 		}

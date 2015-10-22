@@ -11,49 +11,12 @@
  * @package    Remind_To_Read
  * @subpackage Remind_To_Read/partials
  */
-<<<<<<< HEAD
+
 
 ?>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
-=======
-?>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
-
-<style>
-    .success {
-		padding:       0.8em;
-		margin-bottom: 1em;
-		border:        2px solid #ddd;
-		background:    #e6efc2;
-		color:         #264409;
-		border-color:  #c6d880;
-	}
-
-    .success a {
-		color:         #264409;
-	}
-
-    .success p {
-		margin:         0;
-	}
-
-    .wp-rtr-extended-light {
-		color:          #777;
-		font-size:      12px;
-		margin-left:     1em;
-	}
-	.noUnderline {
-		text-decoration: none;
-	}
-
-	#rtr-extended-settings .form-table th {
-		width: 230px;
-	}
-</style>
-
->>>>>>> 3ad3ff69bd1b7de3ef0abd2c03825f0a5ca83b60
 <div class="wrap" id="rtr-extended-settings">
     <?php
     if (!empty($errors)) {
@@ -62,7 +25,7 @@
         }
     }
     ?>
-    <h2>RTR Extended Settings <span class="wp-rtr-extended-light">Version <?php echo Remind_To_Read_Admin::$VERSION; ?></span></h2>
+    <h2>Remind to Read Settings <span class="wp-rtr-extended-light">Version <?php echo Remind_To_Read_Admin::$VERSION; ?></span></h2>
 
 
     <?php

@@ -1,4 +1,4 @@
-;(function(){
+;(function($, document){
   function SLApp(){
     // console.log('SLApp');
     var _email = null,
@@ -11,6 +11,13 @@
         _selector = "#articleBody>p";
 
     blastOff();
+
+    var eventAppeared     = new Event('remindtoread-appeared');
+    var eventHovered      = new Event('remindtoread-hovered');
+    var eventClicked      = new Event('remindtoread-clicked');
+    var eventSubmitEmail  = new Event('remindtoread-submit-email');
+    var eventChangedTime  = new Event('remindtoread-changed-time');
+    var eventClosed       = new Event('remindtoread-closed');
 
     function blastOff(){
       // console.log('blastOff');
@@ -60,6 +67,7 @@
           displayWhileScrolling();
         }
       });
+
       var remindMeLaterButton = document.querySelector('.sendlater-container button'),
         emailField = document.querySelector('.sendlater-container .sendlater-email-input-field'),
         emailSubmitForm = document.querySelector('.sendlater-container form'),
@@ -79,6 +87,7 @@
 
     function makeVisible(){
       displayWhileScrolling();
+      document.dispatchEvent(eventHovered);
     }
 
     function hideWhileScrolling(){
@@ -129,6 +138,8 @@
         _el.classList.add('accept-email');
         document.querySelector('.sendlater-email-input-field').focus();
       }
+      
+      document.dispatchEvent(eventClicked);
     }
 
     function handleClickEmail(evt){
@@ -143,6 +154,7 @@
         _el.classList.remove('accept-email');
         _el.classList.add('select-time');
         _lastState = 'select-time';
+        document.dispatchEvent(eventSubmitEmail);
       }
     }
 
@@ -150,6 +162,7 @@
       // console.log('handleClickTime');
       var val = document.querySelector('.time-option-change').value;
       requestScheduledLater(val);
+      document.dispatchEvent(eventChangedTime);
     }
 
     function defaultCallback(response){
@@ -202,13 +215,14 @@
 
     function closeModal(){
       // console.log('closeModal');
+      document.dispatchEvent(eventClosed);
       document.querySelector('.sendlater-move-right').classList.add('sendlater-closed');
     }
 
   }
 
   TNY.SLApp = SLApp;
-})();
+})(jQuery, document);
 
 jQuery(document).ready(function(){
   if(jQuery('.sendlater-move-right').length > 0){

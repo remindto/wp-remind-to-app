@@ -51,7 +51,6 @@ class Remind_To_Read_Public {
 
 		$this->remind_to_read = $remind_to_read;
 		$this->version = $version;
-<<<<<<< HEAD
 		$hook = 'article_pre_content';
 
 		add_action( 'wp_head', array( $this, 'healthcheck_remind_to_read') );
@@ -61,12 +60,6 @@ class Remind_To_Read_Public {
 		add_action( 'wp_ajax_nopriv_remind_to_read', array( $this, 'remind_to_read') );
 
 		add_action( $hook, array( $this, 'remind_to_read_module_insert') ); 
-=======
-
-		add_action( 'wp_head', array( $this, 'healthcheck_remind_to_read') );
-		// add_action( 'wp_ajax_remind_to_read', array( $this, 'remind_to_read') );
-		add_action( 'wp_ajax_nopriv_remind_to_read', array( $this, 'remind_to_read') );
->>>>>>> 3ad3ff69bd1b7de3ef0abd2c03825f0a5ca83b60
 	}
 
 	/**
@@ -119,7 +112,6 @@ class Remind_To_Read_Public {
 
 
 	public function healthcheck_remind_to_read() {
-<<<<<<< HEAD
 		// error_log('Remind to read is working');
 	}
 
@@ -141,9 +133,6 @@ class Remind_To_Read_Public {
 		if( $this->show_continue_reading() ){
 			require 'partials/continue-to-read-public-display.php';
 		}
-=======
-		error_log('Remind to read is working');
->>>>>>> 3ad3ff69bd1b7de3ef0abd2c03825f0a5ca83b60
 	}
 
 	/**
