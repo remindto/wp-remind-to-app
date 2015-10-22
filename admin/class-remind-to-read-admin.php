@@ -67,6 +67,9 @@ class Remind_To_Read_Admin {
 		$this->version = $version;
 
 		$this->RTRExtendedSettings();
+
+		require_once('wp-updates-plugin.php');
+		new WPUpdatesPluginUpdater_1347( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
 	}
 
 	/**
