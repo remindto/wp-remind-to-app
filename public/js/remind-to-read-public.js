@@ -65,6 +65,7 @@
         // console.log(_visible);
         if(_visible === false){
           displayWhileScrolling();
+          document.dispatchEvent(eventAppeared);
         }
       });
 
