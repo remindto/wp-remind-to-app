@@ -10,7 +10,7 @@ A WordPress Plugin to let your users send themselves delayed reminders
 
 ## Installation
 
-RTR Extended Settings can be installed directly into your plugins folder "as-is". Activate in the plugin panel. Settings can be adjusted in the Settings > Remind to Read Settings.
+RTR Extended Settings can be installed directly into your plugins folder "as-is". Once uploaded to your `wp-content/plugins` folder, activate it via the WordPress Dashbaord like you would any other plugin. Settings can be adjusted in the Settings > Remind to Read Settings.
 
 ## License
 
