@@ -60,7 +60,7 @@
 }
 
 .return-to-spot-wrapper {
-  opacity: 0;
+  opacity: 1;
 }
 
 .con-clock {
@@ -96,7 +96,7 @@
 }
 
 .sendlater-container .close-icon {
-  display: none;
+  display: block;
   top: -6px;
   right: -7px;
   background-size: 20px 20px;
@@ -272,7 +272,7 @@
   margin: 0 7px 0 auto;
   height: 35px;
   border: 1px solid #ccc;
-  padding: 12px 8px;
+  padding: 8px;
   line-height: 26px;
 }
 
