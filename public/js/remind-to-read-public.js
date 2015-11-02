@@ -26,8 +26,14 @@
       } else {
         setupEvents();
       }
+      check_is_touch();
     }
 
+    function check_is_touch(){
+      if(is_touch_device()){
+        jQuery('body').addClass('is_touch');
+      }
+    }
     /**
      * Get the paragraph that is closest to the top of the window
      */
@@ -59,12 +65,14 @@
         // console.log(_visible);
         if(_visible === true){
           hideWhileScrolling();
+          // console.log('Running scrollChangeToDown');
         }
       });
       document.addEventListener('scrollChangeToUp', function(){
         // console.log(_visible);
         if(_visible === false){
           displayWhileScrolling();
+          // console.log('Running scrollChangeToUp');
           document.dispatchEvent(eventAppeared);
         }
       });
@@ -139,8 +147,19 @@
         _el.classList.add('accept-email');
         document.querySelector('.sendlater-email-input-field').focus();
       }
-      
       document.dispatchEvent(eventClicked);
+    }
+
+    function inputFieldBlur(){
+      jQuery('.is_touch .sendlater-container').css('top', 'auto');
+    }
+
+    function inputFieldFocus(){
+      jQuery('.is_touch .sendlater-container').css('top', (window.scrollY - jQuery('.sendlater-container').height()) + 'px');
+    }
+
+    function is_touch_device() {
+      return 'ontouchstart' in window || 'onmsgesturechange' in window;
     }
 
     function handleClickEmail(evt){

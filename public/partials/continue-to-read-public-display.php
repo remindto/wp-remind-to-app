@@ -15,11 +15,13 @@
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 
-<div class="return-to-spot-wrapper">
-  <div class="return-to-spot">
-    <div class="return-to-spot-button">
-      Click to continue where you stopped
-    </div>  
-    <a href="#" class="close-icon"></a>
-  </div>  
-</div>
+<?php
+// <div class="return-to-spot-wrapper">
+// <div class="return-to-spot-wrapper">
+//   <div class="return-to-spot">
+//     <a class="return-to-spot-button" href="#">
+//       Click to continue where you stopped
+//     </a>
+//     <a href="#" class="close-icon"></a>
+//   </div>
+// </div>

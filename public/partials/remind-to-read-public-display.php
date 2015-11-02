@@ -24,13 +24,13 @@
     <div class="sendlater-email-input">
       <form action="" class="sll-email-form row" style="">
         <div class="sendlater-email-field-wrapper">
-          <input name="email" type="email" required="" placeholder="Enter your email address" class="sendlater-email-input-field sll-email">
+          <input name="email" type="email" required="" placeholder="Enter your email address." class="sendlater-email-input-field sll-email">
         </div>
         <div class="sendlater-email-button-wrapper">
           <input type="submit" value="Go" class="email-input-submit col c3">
         </div>
       </form>
-      <p class="email-more-explain-after">We'll send you a reminder of where you left off.</p>
+      <p class="email-more-explain-after">We’ll send you a reminder.</p>
     </div>
     <div class="sendlater-time-option">
       <p>Your reminder will be sent 

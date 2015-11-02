@@ -22,42 +22,51 @@
       return decodeURIComponent(getQueryString(param));
     }
 
-    function scrollToOldSpot(){
+    function scrollToOldSpot(e){
+      e.preventDefault();
       var selector = getDecodedQueryParam('slr');
       var indx = parseInt(getDecodedQueryParam('sdx'), 10);
       var el = document.querySelectorAll(selector)[indx];
-      var elDistrace = el.getBoundingClientRect().top - 200;
+      var elDistrace = el.offsetTop + (window.innerHeight - (window.innerHeight/2));
       // console.log(selector);
       // console.log(indx);
       // console.log(el);
       // console.log(elDistrace);
       // console.log(window.scrollY);
-      if(window.scrollY !== 0){
-        elDistrace = elDistrace + window.scrollY;
-        // console.log('Updated: ', elDistrace);
-      }
-      hideContinueBarForever();
 
+      hideContinueBarForever();
       temporarilyHideAds();
 
       jQuery('html, body').animate({
            'scrollTop': elDistrace
-      }, 400, 'swing');
+      }, 500, 'swing');
 
       window.setTimeout(function(){
         el.classList.add('highlight-yellow');
-      }, 500);
+      }, 700);
     }
 
     function temporarilyHideAds(){
       var hideAds = document.createElement('style');
       hideAds.innerHTML = " .content-ad-wrapper{display: none !important; }";
-      hideAds.id = "tempHideAds";
+      hideAds.className = "tempHideAds";
       var headTag = document.querySelector('head');
       headTag.appendChild(hideAds);
       window.setTimeout(function(){
-        document.querySelector('#tempHideAds').remove();
+        document.addEventListener("touchmove", reengageAds, false);
+        document.addEventListener("scroll", reengageAds, false);
       }, 750);
+    }
+
+    function reengageAds(){
+      document.removeEventListener("touchmove", reengageAds, false);
+      document.removeEventListener("scroll", reengageAds, false);
+      window.setTimeout(function(){
+        document.querySelector('.tempHideAds').remove();
+      }, 15000);
+      window.setTimeout(function(){
+        document.querySelector('.highlight-yellow').classList.remove('highlight-yellow');
+      }, 1000);
     }
 
     function hideContinueBarForever(){
