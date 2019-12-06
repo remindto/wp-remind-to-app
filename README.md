@@ -1,6 +1,6 @@
-![](https://github.com/RemindToRead/wp-remind-to-read/blob/master/rtr-extended-settings.png?raw=true)
+![](https://github.com/RemindTo/wp-remind-to-app/blob/master/rtr-extended-settings.png?raw=true)
 
-# Remind to Read
+# Remind to app
 
 A WordPress Plugin to let your users send themselves delayed reminders
 
@@ -10,7 +10,7 @@ A WordPress Plugin to let your users send themselves delayed reminders
 
 ## Installation
 
-RTR Extended Settings can be installed directly into your plugins folder "as-is". Activate in the plugin panel. Settings can be adjusted in the Settings > Remind to Read Settings.
+RTR Extended Settings can be installed directly into your plugins folder "as-is". Activate in the plugin panel. Settings can be adjusted in the Settings > Remind to app Settings.
 
 ## License
 
