@@ -25,7 +25,7 @@
         }
     }
     ?>
-    <h2>Remind to Read Settings <span class="wp-rtr-extended-light">Version <?php echo Remind_To_Read_Admin::$VERSION; ?></span></h2>
+    <h2>Remindto.app Settings <span class="wp-rtr-extended-light">Version <?php echo Remind_To_Read_Admin::$VERSION; ?></span></h2>
 
 
     <?php
@@ -37,10 +37,10 @@
 
       <input type="hidden" name="isRTRExtSettings" value="Y" />
 	<hr>
-      <h3>'Remind to Read' Module</h3>
+      <h3>'Remindto.app' Module</h3>
       <table class="form-table">
         <tr valign="top">
-          <th scope="row"><label for="module_remind_to_read_active"><?php _e('Remind to Read Status'); ?></label></th>
+          <th scope="row"><label for="module_remind_to_read_active"><?php _e('Remindto.app Status'); ?></label></th>
           <td>
             <?php $this->printSelectTag("remind_to_read_active",
             array("yes" => "Active", "no" => "Disabled"),
@@ -49,7 +49,7 @@
           </td>
         </tr>
         <tr valign="top">
-          <th scope="row"><label for="module_remind_to_read_key"><?php _e('Remind to Read Key'); ?></label></th>
+          <th scope="row"><label for="module_remind_to_read_key"><?php _e('Remindto.app Key'); ?></label></th>
           <td>
             <?php 
 			$this->printTextTag("remind_to_read_key", 
@@ -60,7 +60,7 @@
           </td>
         </tr>
         <tr valign="top">
-          <th scope="row"><label for="module_remind_to_read_url"><?php _e('Remind to Read Domain'); ?></label></th>
+          <th scope="row"><label for="module_remind_to_read_url"><?php _e('Remindto.app Domain'); ?></label></th>
           <td>
             <?php 
 			$this->printTextTag("remind_to_read_url", 

@@ -43,8 +43,8 @@ class Remind_To_Read_Admin {
 	public static $VERSION		= "1.0.0";
 	private $NAME;
 	private $MENU_SLUG			= "rtr-extended-settings";
-	private $MENU_TITLE			= "Remind to Read Settings";
-	private $MENU_PAGE_TITLE	= "Remind to Read Settings > Settings";
+	private $MENU_TITLE			= "Remindto.app Settings";
+	private $MENU_PAGE_TITLE	= "Remindto.app Settings > Settings";
 	private $OPTIONS_KEY		= "rtr-extended-settings";
 	private $CAPABILITY			= "manage_options";
 
@@ -210,7 +210,7 @@ class Remind_To_Read_Admin {
 		if (!isset($options['api_key']) || empty($options['api_key'])) {
 			?>
 			<div id='message' class='error'>
-				<p><strong>Remind to Read Settings plugin is not active.</strong> You need to <a href='<?php echo $this->getSettingsURL(); ?>'>update settings</a> to get things going.</p>
+				<p><strong>Remindto.app Settings plugin is not active.</strong> You need to <a href='<?php echo $this->getSettingsURL(); ?>'>update settings</a> to get things going.</p>
 			</div>
 			<?php
 		}

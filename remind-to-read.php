@@ -8,20 +8,20 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://github.com/RemindToRead/wp-remind-to-read
- * @since             1.0.0
- * @package           Remind_to_read
+ * @link              https://github.com/RemindTo/wp-remind-to-app
+ * @since             1.1.0
+ * @package           Remind_to_app
  *
  * @wordpress-plugin
- * Plugin Name:       Remind to Read
- * Plugin URI:        https://github.com/RemindToRead/wp-remind-to-read
- * Description:       Remind to Read provides your users a reminder to reengage content
- * Version:           1.0.0
- * Author:            Remind to Read
- * Author URI:        https://github.com/RemindToRead/wp-remind-to-read
+ * Plugin Name:       Remindto.app
+ * Plugin URI:        https://github.com/RemindTo/wp-remind-to-app
+ * Description:       Remindto.app provides your users a reminder to reengage content
+ * Version:           1.1.0
+ * Author:            Remindto.app
+ * Author URI:        https://github.com/RemindTo/wp-remind-to-app
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       remind-to-read
+ * Text Domain:       remind-to-app
  * Domain Path:       /languages
  */
 

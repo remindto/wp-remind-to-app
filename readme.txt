@@ -14,7 +14,7 @@ Provide your users a reminder to come back to where they were
 
 Remind To Read lets your users remind themselves about your content. 
 
-Major features in Remind to Read include:
+Major features in Remindto.app include:
 
 *	Gracefully prompt users with reminder option using modal that appears when users scroll up
 *	Tracking hooks for event analytics using custom JavaScript events
